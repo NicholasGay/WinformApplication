@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Sensor.cs" />
     <Compile Include="tabChart.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Bluetooth
 {
+
     public partial class Form1 : Form
     {
         BluetoothDeviceInfo[] peers;
@@ -31,6 +32,8 @@ namespace Bluetooth
         Thread chart2updateThread;
         int count;
         string recv_msg;
+        Sensor sensor1 = new Sensor("Sensor1", 0x00, 0x00);
+        Sensor sensor2 = new Sensor("Sensor2", 0x00, 0x00);
 
         public Form1()
         {
@@ -38,11 +41,8 @@ namespace Bluetooth
             t_discover = new Thread(new ThreadStart(Discover));
             t_discoverend = new Thread(new ThreadStart(Discoverend));
 
+
         }
-
-
-
-
 
         private void cbBTDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -158,7 +158,7 @@ namespace Bluetooth
                 Thread recvthread = new Thread(new ThreadStart(RecvThread));
                 recvthread.Start();
                 //Console.WriteLine(device.DeviceName.ToString());
-                SetConnectionStatusLabel("Connected to \n" + device.DeviceName.ToString());
+                SetMACLabel(device.DeviceAddress.ToString());
 
             }
             catch (Exception ex)
@@ -174,7 +174,7 @@ namespace Bluetooth
             peerStream.Dispose();
             cli.Dispose();
             txtDisplay.AppendText("\nDevice disconnected\r\n");
-            SetConnectionStatusLabel("Device\nDisconnected");
+            SetMACLabel("");
             btnDisconnect.Enabled = false;
             btnConnect.Enabled = true;
             btnSend.Enabled = false;
@@ -208,38 +208,27 @@ namespace Bluetooth
                 //    Thread.CurrentThread.ManagedThreadId.ToString());
                 while (run)
                 {
-                    //var count = peerStream.Read(data, 0, 99);
-                    //data[count] = 0;
 
-                    //String strtemp = new
-                    //String(System.Text.Encoding.UTF8.GetString(data).ToCharArray());
-                    //String(System.Text.Encoding.Unicode.GetString(data).ToCharArray());
                     do
                     {
                         Console.WriteLine("data[0]: " + data[0] + "Start");
                         data[0] = (byte)peerStream.ReadByte();
-                    } while (data[0] != 0xA5);
+                    } while (data[0] != Receving_Config_Constants.START_BYTE);
                     i = 1;
                     for (i = 1; i < 7; i++)
                     {
                         Console.WriteLine("data[" + i.ToString() + "]: " + data[i]);
                         data[i] = (byte)peerStream.ReadByte();
-                        if (data[i] == '_')
+                        if (data[6] == Receving_Config_Constants.END_BYTE)
                         {
+
                             byte[] f_data = new byte[i - 1];
                             for (j = 0; j < i - 1; j++)
                             {
                                 f_data[j] = data[j + 1];
                             }
-                            //Console.WriteLine("Set text");
-                            SetText(Encoding.UTF8.GetString(f_data));
-                            if (test_run)
-                            {
-                                recv_msg = Encoding.UTF8.GetString(f_data);
-                                DataRecvEvent.Set();
 
-                            }
-                            i = 6;
+                            i = 7;
                         }
                         else
                         {
@@ -280,7 +269,7 @@ namespace Bluetooth
         {
             //Console.WriteLine("txtDisplay_ThreadID-Invoke: " +
             //    Thread.CurrentThread.ManagedThreadId.ToString());
-            connection_status_text.Text = text;
+            mac_address_label.Text = text;
 
         }
 
@@ -322,7 +311,7 @@ namespace Bluetooth
 
         }
 
-        private void SetConnectionStatusLabel(string text)
+        private void SetMACLabel(string text)
         {
             Console.WriteLine("SetConnectionStatusLabel_ThreadID: " +
                 Thread.CurrentThread.ManagedThreadId.ToString());
@@ -337,4 +326,5 @@ namespace Bluetooth
 
 
     }
+
 }

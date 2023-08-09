@@ -36,8 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.communication_test_tab = new System.Windows.Forms.TabControl();
             this.tabPageconnectivity = new System.Windows.Forms.TabPage();
-            this.connection_status_text = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.mac_address_label = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.txtDisplay = new System.Windows.Forms.TextBox();
@@ -95,8 +94,7 @@
             // 
             // tabPageconnectivity
             // 
-            this.tabPageconnectivity.Controls.Add(this.connection_status_text);
-            this.tabPageconnectivity.Controls.Add(this.label2);
+            this.tabPageconnectivity.Controls.Add(this.mac_address_label);
             this.tabPageconnectivity.Controls.Add(this.btnDisconnect);
             this.tabPageconnectivity.Controls.Add(this.cbBTDevices);
             this.tabPageconnectivity.Controls.Add(this.btnSend);
@@ -113,24 +111,13 @@
             this.tabPageconnectivity.UseVisualStyleBackColor = true;
             this.tabPageconnectivity.Click += new System.EventHandler(this.tabPageconnectivity_Click_1);
             // 
-            // connection_status_text
+            // mac_address_label
             // 
-            this.connection_status_text.AutoSize = true;
-            this.connection_status_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connection_status_text.Location = new System.Drawing.Point(468, 67);
-            this.connection_status_text.Name = "connection_status_text";
-            this.connection_status_text.Size = new System.Drawing.Size(417, 55);
-            this.connection_status_text.TabIndex = 9;
-            this.connection_status_text.Text = "Connection Status";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Output Display";
+            this.mac_address_label.AutoSize = true;
+            this.mac_address_label.Location = new System.Drawing.Point(42, 30);
+            this.mac_address_label.Name = "mac_address_label";
+            this.mac_address_label.Size = new System.Drawing.Size(0, 13);
+            this.mac_address_label.TabIndex = 8;
             // 
             // btnDisconnect
             // 
@@ -146,7 +133,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(382, 225);
+            this.btnSend.Location = new System.Drawing.Point(804, 224);
             this.btnSend.Margin = new System.Windows.Forms.Padding(2);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(69, 21);
@@ -161,7 +148,7 @@
             this.txtDisplay.Margin = new System.Windows.Forms.Padding(2);
             this.txtDisplay.Multiline = true;
             this.txtDisplay.Name = "txtDisplay";
-            this.txtDisplay.Size = new System.Drawing.Size(406, 155);
+            this.txtDisplay.Size = new System.Drawing.Size(828, 155);
             this.txtDisplay.TabIndex = 5;
             // 
             // txtSend
@@ -169,7 +156,7 @@
             this.txtSend.Location = new System.Drawing.Point(45, 225);
             this.txtSend.Margin = new System.Windows.Forms.Padding(2);
             this.txtSend.Name = "txtSend";
-            this.txtSend.Size = new System.Drawing.Size(314, 20);
+            this.txtSend.Size = new System.Drawing.Size(743, 20);
             this.txtSend.TabIndex = 6;
             // 
             // btnConnect
@@ -335,7 +322,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl communication_test_tab;
         private System.Windows.Forms.TabPage tabPageconnectivity;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label mac_address_label;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox txtDisplay;
@@ -343,7 +330,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDiscover;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label connection_status_text;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button btnStop_Test;
         private System.Windows.Forms.Button btnStart_Test;
