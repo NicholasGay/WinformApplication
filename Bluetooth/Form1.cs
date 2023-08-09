@@ -1,20 +1,10 @@
 ﻿using InTheHand.Net;
-using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Sockets;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Bluetooth
 {
@@ -50,150 +40,9 @@ namespace Bluetooth
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            serviceClass = BluetoothService.SerialPort;
-
-            chart1.Series["Series1"].ChartType = SeriesChartType.FastLine;
-            chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chart1.ChartAreas["ChartArea1"].AxisY.Minimum = -32767;
-            chart1.ChartAreas["ChartArea1"].AxisY.Maximum = 32768;
-            chart1.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
-            chart1.Series["Series1"].Color = Color.Navy;
-
-            chart2.Series["Series1"].ChartType = SeriesChartType.FastLine;
-            chart2.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-            chart2.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chart2.ChartAreas["ChartArea1"].AxisY.Minimum = -32767;
-            chart2.ChartAreas["ChartArea1"].AxisY.Maximum = 32768;
-            chart2.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
-            chart2.Series["Series1"].Color = Color.Navy;
-
-            Callchartthread();
-            Callchart2thread();
-        }
-
-        private void Callchartthread()
-        {
-            chart1.Series["Series1"].Points.Clear();
-            run = true;
-            chartupdateThread = new Thread(new ThreadStart(ProcessChart));
-            chartupdateThread.Start();
-        }
-
-        private void Callchart2thread()
-        {
-            chart2.Series["Series1"].Points.Clear();
-            run = true;
-            chart2updateThread = new Thread(new ThreadStart(ProcessChart2));
-            chart2updateThread.Start();
-        }
-
-        private void ProcessChart()
-        {
-            int i = 0;
-            while (true)
-            {
-                
-                DataSendEvent.WaitOne();
-                int numberOfPoints = chart1.Series["Series1"].Points.Count;
-                Console.WriteLine($"Number of points in Series1: {numberOfPoints}");
-                if(numberOfPoints == 0)
-                {
-                    i = 0;
-                }
-                String temp = txtSend.Text;
-                if (temp.Length >= 2)
-                {
-                    temp = temp.Remove(0, 1);
-                    temp = temp.Remove(temp.Length - 1, 1);
-                    //Console.WriteLine(temp);
-                }
-                else
-                {
-                    // Handle cases where the string has less than 2 characters
-                    Console.WriteLine("String is too short to remove first and last characters.");
-                }
-
-                UpdateChart updatecharthandle = UpdateChartMethod;
-                try
-                {
-                    int f = int.Parse(temp);
-                    this.Invoke(updatecharthandle, i, int.Parse(temp));
-                    i++;
-
-                }
-                catch (Exception ex)
-                {
-                    SetDisplaySendText(temp);
-                    Console.WriteLine(ex.ToString());
-                }
-
-
-            }
 
 
 
-        }
-
-        private void ProcessChart2()
-        {
-            int i = 0;
-            while (true)
-            {
-               
-
-                DataRecvEvent.WaitOne();
-                
-                int numberOfPoints = chart2.Series["Series1"].Points.Count;
-                //Console.WriteLine($"Number of points in Series1: {numberOfPoints}");
-                if (numberOfPoints == 0)
-                {
-                    i = 0;
-                }
-
-                UpdateChart updatecharthandle = UpdateChart2Method;
-                try
-                {
-                    int f = int.Parse(recv_msg);
-                    this.Invoke(updatecharthandle, i, int.Parse(recv_msg));
-                    i++;
-
-                }
-                catch (Exception ex)
-                {
-                    SetDisplaySendText("recieved wrong");
-                }
-
-
-            }
-        }
-
-        private delegate void UpdateChart(int ih, int rdnh);
-        private void UpdateChartMethod(int ih, int rdnh)
-        {
-
-            chart1.Series["Series1"].Points.AddXY(ih, rdnh);
-            if (ih > 12)
-            {     
-                chart1.Series["Series1"].Points.RemoveAt(0);
-                chart1.ChartAreas["ChartArea1"].AxisX.Minimum = Math.Max(0, ih - 12);
-                chart1.ChartAreas["ChartArea1"].AxisX.Maximum = ih - 1;
-            }
-           
-        }
-
-        private void UpdateChart2Method(int ih, int rdnh)
-        {
-            chart2.Series["Series1"].Points.AddXY(ih, rdnh);
-            if (ih > 12)
-            {
-                chart2.Series["Series1"].Points.RemoveAt(0);
-                chart2.ChartAreas["ChartArea1"].AxisX.Minimum = Math.Max(0, ih - 12);
-                chart2.ChartAreas["ChartArea1"].AxisX.Maximum = ih - 1;
-            }
-        }
 
         private void cbBTDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -346,7 +195,7 @@ namespace Bluetooth
             {
                 SetText("Length is wrong or test is not running");
             }
-            
+
         }
 
         public void RecvThread()
@@ -373,7 +222,7 @@ namespace Bluetooth
                     i = 1;
                     for (i = 1; i < 7; i++)
                     {
-                        Console.WriteLine("data[" + i.ToString() +"]: "+ data[i]);
+                        Console.WriteLine("data[" + i.ToString() + "]: " + data[i]);
                         data[i] = (byte)peerStream.ReadByte();
                         if (data[i] == '_')
                         {
@@ -384,10 +233,11 @@ namespace Bluetooth
                             }
                             //Console.WriteLine("Set text");
                             SetText(Encoding.UTF8.GetString(f_data));
-                            if (test_run) {
+                            if (test_run)
+                            {
                                 recv_msg = Encoding.UTF8.GetString(f_data);
                                 DataRecvEvent.Set();
-                                
+
                             }
                             i = 6;
                         }
@@ -485,17 +335,6 @@ namespace Bluetooth
             Console.WriteLine("Clicked");
         }
 
-        private void btnStart_Test_Click(object sender, EventArgs e)
-        {
-            test_run = true;
-            
-        }
 
-        private void btnStop_Test_Click(object sender, EventArgs e)
-        {
-            test_run = false;
-            chart1.Series["Series1"].Points.Clear();
-            chart2.Series["Series1"].Points.Clear();
-        }
     }
 }

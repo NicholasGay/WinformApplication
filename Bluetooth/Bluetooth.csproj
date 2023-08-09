@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tabGauge.cs">
+    <Compile Include="tabChart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.cs">
