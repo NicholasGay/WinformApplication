@@ -49,6 +49,11 @@ namespace Bluetooth
             if (cbBTDevices.SelectedIndex != -1)
             {
                 device = (BluetoothDeviceInfo)cbBTDevices.SelectedItem;
+                SetMACLabel(device.DeviceAddress.ToString());
+            }
+            else
+            {
+                SetMACLabel("");
             }
         }
 
@@ -123,7 +128,10 @@ namespace Bluetooth
                 btnDiscover.Enabled = enablevar;
 
                 if (cbBTDevices.Items.Count != 0)
+                {
                     btnConnect.Enabled = true;
+                    SetMACLabel(device.DeviceAddress.ToString());
+                }
                 else
                     btnConnect.Enabled = false;
             }
@@ -158,7 +166,7 @@ namespace Bluetooth
                 Thread recvthread = new Thread(new ThreadStart(RecvThread));
                 recvthread.Start();
                 //Console.WriteLine(device.DeviceName.ToString());
-                SetMACLabel(device.DeviceAddress.ToString());
+               
 
             }
             catch (Exception ex)
@@ -174,7 +182,6 @@ namespace Bluetooth
             peerStream.Dispose();
             cli.Dispose();
             txtDisplay.AppendText("\nDevice disconnected\r\n");
-            SetMACLabel("");
             btnDisconnect.Enabled = false;
             btnConnect.Enabled = true;
             btnSend.Enabled = false;
