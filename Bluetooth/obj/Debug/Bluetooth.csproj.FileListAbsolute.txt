@@ -92,3 +92,17 @@ C:\Users\gay_n\Documents\WindowsForm\BluetoothMYp\Bluetooth\obj\Debug\Bluetooth.
 C:\Users\gay_n\Documents\WindowsForm\BluetoothMYp\Bluetooth\obj\Debug\Bluetooth.csproj.CopyComplete
 C:\Users\gay_n\Documents\WindowsForm\BluetoothMYp\Bluetooth\obj\Debug\Bluetooth.exe
 C:\Users\gay_n\Documents\WindowsForm\BluetoothMYp\Bluetooth\obj\Debug\Bluetooth.pdb
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Bluetooth.exe.config
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Bluetooth.exe
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Bluetooth.pdb
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\InTheHand.Net.Personal.dll
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\InTheHand.Net.Personal.xml
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.AssemblyReference.cache
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.SuggestedBindingRedirects.cache
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.Form1.resources
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.Properties.Resources.resources
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.GenerateResource.cache
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.CoreCompileInputs.cache
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.CopyComplete
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.exe
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.pdb

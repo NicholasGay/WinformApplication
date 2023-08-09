@@ -369,10 +369,11 @@ namespace Bluetooth
                     {
                         Console.WriteLine("data[0]: " + data[0] + "Start");
                         data[0] = (byte)peerStream.ReadByte();
-                    } while (data[0] != '~');
+                    } while (data[0] != 0xA5);
                     i = 1;
-                    for (i = 1; i < 6; i++)
+                    for (i = 1; i < 7; i++)
                     {
+                        Console.WriteLine("data[" + i.ToString() +"]: "+ data[i]);
                         data[i] = (byte)peerStream.ReadByte();
                         if (data[i] == '_')
                         {
