@@ -13,13 +13,13 @@ namespace Bluetooth
         {
             serviceClass = BluetoothService.SerialPort;
 
-            chart1.Series["Series1"].ChartType = SeriesChartType.FastLine;
+            chart1.Series["Temperature"].ChartType = SeriesChartType.FastLine;
             chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
             chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chart1.ChartAreas["ChartArea1"].AxisY.Minimum = -32767;
-            chart1.ChartAreas["ChartArea1"].AxisY.Maximum = 32768;
+            chart1.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
+            chart1.ChartAreas["ChartArea1"].AxisY.Maximum = 60;
             chart1.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
-            chart1.Series["Series1"].Color = Color.Navy;
+            chart1.Series["Temperature"].Color = Color.Navy;
 
  
 
@@ -28,7 +28,7 @@ namespace Bluetooth
         }
         private void Callchartthread()
         {
-            chart1.Series["Series1"].Points.Clear();
+            chart1.Series["Temperature"].Points.Clear();
             run = true;
             chartupdateThread = new Thread(new ThreadStart(ProcessChart));
             chartupdateThread.Start();
@@ -43,8 +43,8 @@ namespace Bluetooth
             {
 
                 DataSendEvent.WaitOne();
-                int numberOfPoints = chart1.Series["Series1"].Points.Count;
-                Console.WriteLine($"Number of points in Series1: {numberOfPoints}");
+                int numberOfPoints = chart1.Series["Temperature"].Points.Count;
+                Console.WriteLine($"Number of points in Temperature: {numberOfPoints}");
                 
 
                 UpdateChart updatecharthandle = UpdateChartMethod;
@@ -73,10 +73,10 @@ namespace Bluetooth
         private void UpdateChartMethod(double ih, double rdnh)
         {
 
-            chart1.Series["Series1"].Points.AddXY(ih, rdnh);
+            chart1.Series["Temperature"].Points.AddXY(ih, rdnh);
             if (ih > 12)
             {
-                chart1.Series["Series1"].Points.RemoveAt(0);
+                chart1.Series["Temperature"].Points.RemoveAt(0);
                 chart1.ChartAreas["ChartArea1"].AxisX.Minimum = Math.Max(0, ih - 12);
                 chart1.ChartAreas["ChartArea1"].AxisX.Maximum = ih - 1;
             }

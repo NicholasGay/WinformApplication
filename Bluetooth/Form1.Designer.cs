@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cbBTDevices = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.communication_test_tab = new System.Windows.Forms.TabControl();
-            this.tabPageconnectivity = new System.Windows.Forms.TabPage();
+            this.Settings = new System.Windows.Forms.TabPage();
             this.mac_address_label = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
@@ -41,13 +42,13 @@
             this.txtSend = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDiscover = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Chart_tab = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabGuage = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.communication_test_tab.SuspendLayout();
-            this.tabPageconnectivity.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Settings.SuspendLayout();
+            this.Chart_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabGuage.SuspendLayout();
             this.SuspendLayout();
@@ -74,8 +75,8 @@
             // 
             // communication_test_tab
             // 
-            this.communication_test_tab.Controls.Add(this.tabPageconnectivity);
-            this.communication_test_tab.Controls.Add(this.tabPage2);
+            this.communication_test_tab.Controls.Add(this.Settings);
+            this.communication_test_tab.Controls.Add(this.Chart_tab);
             this.communication_test_tab.Controls.Add(this.tabGuage);
             this.communication_test_tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.communication_test_tab.Location = new System.Drawing.Point(0, 0);
@@ -84,24 +85,24 @@
             this.communication_test_tab.Size = new System.Drawing.Size(918, 297);
             this.communication_test_tab.TabIndex = 9;
             // 
-            // tabPageconnectivity
+            // Settings
             // 
-            this.tabPageconnectivity.Controls.Add(this.mac_address_label);
-            this.tabPageconnectivity.Controls.Add(this.btnDisconnect);
-            this.tabPageconnectivity.Controls.Add(this.cbBTDevices);
-            this.tabPageconnectivity.Controls.Add(this.btnSend);
-            this.tabPageconnectivity.Controls.Add(this.txtDisplay);
-            this.tabPageconnectivity.Controls.Add(this.txtSend);
-            this.tabPageconnectivity.Controls.Add(this.btnConnect);
-            this.tabPageconnectivity.Controls.Add(this.btnDiscover);
-            this.tabPageconnectivity.Location = new System.Drawing.Point(4, 22);
-            this.tabPageconnectivity.Name = "tabPageconnectivity";
-            this.tabPageconnectivity.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageconnectivity.Size = new System.Drawing.Size(910, 271);
-            this.tabPageconnectivity.TabIndex = 0;
-            this.tabPageconnectivity.Text = "Connectivity";
-            this.tabPageconnectivity.UseVisualStyleBackColor = true;
-            this.tabPageconnectivity.Click += new System.EventHandler(this.tabPageconnectivity_Click_1);
+            this.Settings.Controls.Add(this.mac_address_label);
+            this.Settings.Controls.Add(this.btnDisconnect);
+            this.Settings.Controls.Add(this.cbBTDevices);
+            this.Settings.Controls.Add(this.btnSend);
+            this.Settings.Controls.Add(this.txtDisplay);
+            this.Settings.Controls.Add(this.txtSend);
+            this.Settings.Controls.Add(this.btnConnect);
+            this.Settings.Controls.Add(this.btnDiscover);
+            this.Settings.Location = new System.Drawing.Point(4, 22);
+            this.Settings.Name = "Settings";
+            this.Settings.Padding = new System.Windows.Forms.Padding(3);
+            this.Settings.Size = new System.Drawing.Size(910, 271);
+            this.Settings.TabIndex = 0;
+            this.Settings.Text = "Settings";
+            this.Settings.UseVisualStyleBackColor = true;
+            this.Settings.Click += new System.EventHandler(this.tabPageconnectivity_Click_1);
             // 
             // mac_address_label
             // 
@@ -174,16 +175,16 @@
             this.btnDiscover.UseVisualStyleBackColor = true;
             this.btnDiscover.Click += new System.EventHandler(this.btnDiscover_Click);
             // 
-            // tabPage2
+            // Chart_tab
             // 
-            this.tabPage2.Controls.Add(this.chart1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(910, 271);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Communication Test";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.Chart_tab.Controls.Add(this.chart1);
+            this.Chart_tab.Location = new System.Drawing.Point(4, 22);
+            this.Chart_tab.Name = "Chart_tab";
+            this.Chart_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.Chart_tab.Size = new System.Drawing.Size(910, 271);
+            this.Chart_tab.TabIndex = 1;
+            this.Chart_tab.Text = "Chart";
+            this.Chart_tab.UseVisualStyleBackColor = true;
             // 
             // chart1
             // 
@@ -191,15 +192,19 @@
             this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(162, 21);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(343, 206);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Legend = "Legend1";
+            series2.Name = "Temperature";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(904, 265);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             // 
@@ -234,9 +239,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.communication_test_tab.ResumeLayout(false);
-            this.tabPageconnectivity.ResumeLayout(false);
-            this.tabPageconnectivity.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.Settings.ResumeLayout(false);
+            this.Settings.PerformLayout();
+            this.Chart_tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabGuage.ResumeLayout(false);
             this.tabGuage.PerformLayout();
@@ -250,7 +255,7 @@
         private System.Windows.Forms.ComboBox cbBTDevices;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl communication_test_tab;
-        private System.Windows.Forms.TabPage tabPageconnectivity;
+        private System.Windows.Forms.TabPage Settings;
         private System.Windows.Forms.Label mac_address_label;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btnSend;
@@ -258,7 +263,7 @@
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDiscover;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage Chart_tab;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TabPage tabGuage;
         private System.Windows.Forms.Label label5;
