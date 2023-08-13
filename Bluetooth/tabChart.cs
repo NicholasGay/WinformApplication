@@ -39,15 +39,16 @@ namespace Bluetooth
         private void ProcessChart()
         {
             int i = 0;
+            UpdateChart updatecharthandle = UpdateChartMethod;
             while (true)
             {
 
-                DataSendEvent.WaitOne();
+                DataRecvEvent.WaitOne();
                 int numberOfPoints = chart1.Series["Temperature"].Points.Count;
                 Console.WriteLine($"Number of points in Temperature: {numberOfPoints}");
                 
 
-                UpdateChart updatecharthandle = UpdateChartMethod;
+                
                 try
                 {
                     

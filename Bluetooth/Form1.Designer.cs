@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cbBTDevices = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.communication_test_tab = new System.Windows.Forms.TabControl();
+            this.gauge_tab = new System.Windows.Forms.TabControl();
             this.Settings = new System.Windows.Forms.TabPage();
             this.mac_address_label = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
@@ -45,12 +45,16 @@
             this.Chart_tab = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabGuage = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.communication_test_tab.SuspendLayout();
+            this.tempGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
+            this.tempGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
+            this.tempGaugeSingleLabel1 = new Telerik.WinControls.UI.Gauges.RadialGaugeSingleLabel();
+            this.tempGuage = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
+            this.gauge_tab.SuspendLayout();
             this.Settings.SuspendLayout();
             this.Chart_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabGuage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tempGuage)).BeginInit();
             this.SuspendLayout();
             // 
             // cbBTDevices
@@ -73,17 +77,18 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Output Display";
             // 
-            // communication_test_tab
+            // gauge_tab
             // 
-            this.communication_test_tab.Controls.Add(this.Settings);
-            this.communication_test_tab.Controls.Add(this.Chart_tab);
-            this.communication_test_tab.Controls.Add(this.tabGuage);
-            this.communication_test_tab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.communication_test_tab.Location = new System.Drawing.Point(0, 0);
-            this.communication_test_tab.Name = "communication_test_tab";
-            this.communication_test_tab.SelectedIndex = 0;
-            this.communication_test_tab.Size = new System.Drawing.Size(918, 297);
-            this.communication_test_tab.TabIndex = 9;
+            this.gauge_tab.Controls.Add(this.Settings);
+            this.gauge_tab.Controls.Add(this.Chart_tab);
+            this.gauge_tab.Controls.Add(this.tabGuage);
+            this.gauge_tab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gauge_tab.Location = new System.Drawing.Point(0, 0);
+            this.gauge_tab.Name = "gauge_tab";
+            this.gauge_tab.SelectedIndex = 0;
+            this.gauge_tab.Size = new System.Drawing.Size(918, 297);
+            this.gauge_tab.TabIndex = 9;
+            this.gauge_tab.Click += new System.EventHandler(this.gauge_tab_Click);
             // 
             // Settings
             // 
@@ -102,7 +107,6 @@
             this.Settings.TabIndex = 0;
             this.Settings.Text = "Settings";
             this.Settings.UseVisualStyleBackColor = true;
-            this.Settings.Click += new System.EventHandler(this.tabPageconnectivity_Click_1);
             // 
             // mac_address_label
             // 
@@ -192,25 +196,25 @@
             this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "Temperature";
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series3.Legend = "Legend1";
+            series3.Name = "Temperature";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(904, 265);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             // 
             // tabGuage
             // 
-            this.tabGuage.Controls.Add(this.label5);
+            this.tabGuage.Controls.Add(this.tempGuage);
             this.tabGuage.Location = new System.Drawing.Point(4, 22);
             this.tabGuage.Name = "tabGuage";
             this.tabGuage.Size = new System.Drawing.Size(910, 271);
@@ -218,33 +222,79 @@
             this.tabGuage.Text = "Gauge";
             this.tabGuage.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // tempGaugeArc1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(285, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "label5";
+            this.tempGaugeArc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(11)))), ((int)(((byte)(11)))));
+            this.tempGaugeArc1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(3)))), ((int)(((byte)(3)))));
+            this.tempGaugeArc1.BindEndRange = true;
+            this.tempGaugeArc1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeArc1.Name = "tempGaugeArc1";
+            this.tempGaugeArc1.RangeEnd = 60D;
+            this.tempGaugeArc1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeArc1.UseCompatibleTextRendering = false;
+            this.tempGaugeArc1.Width = 40D;
+            // 
+            // tempGaugeArc2
+            // 
+            this.tempGaugeArc2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.tempGaugeArc2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.tempGaugeArc2.BindStartRange = true;
+            this.tempGaugeArc2.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeArc2.Name = "tempGaugeArc2";
+            this.tempGaugeArc2.RangeEnd = 100D;
+            this.tempGaugeArc2.RangeStart = 60D;
+            this.tempGaugeArc2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeArc2.UseCompatibleTextRendering = false;
+            this.tempGaugeArc2.Width = 40D;
+            // 
+            // tempGaugeSingleLabel1
+            // 
+            this.tempGaugeSingleLabel1.BindValue = true;
+            this.tempGaugeSingleLabel1.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeSingleLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.tempGaugeSingleLabel1.LabelFontSize = 10F;
+            this.tempGaugeSingleLabel1.LabelText = "Text";
+            this.tempGaugeSingleLabel1.LocationPercentage = new System.Drawing.SizeF(0F, -0.1F);
+            this.tempGaugeSingleLabel1.Name = "tempGaugeSingleLabel1";
+            this.tempGaugeSingleLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.tempGaugeSingleLabel1.UseCompatibleTextRendering = false;
+            // 
+            // tempGuage
+            // 
+            this.tempGuage.BackColor = System.Drawing.Color.White;
+            this.tempGuage.CausesValidation = false;
+            this.tempGuage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tempGuage.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.tempGaugeArc1,
+            this.tempGaugeArc2,
+            this.tempGaugeSingleLabel1});
+            this.tempGuage.Location = new System.Drawing.Point(0, 0);
+            this.tempGuage.Name = "tempGuage";
+            this.tempGuage.Size = new System.Drawing.Size(910, 271);
+            this.tempGuage.StartAngle = 180D;
+            this.tempGuage.SweepAngle = 180D;
+            this.tempGuage.TabIndex = 6;
+            this.tempGuage.Text = "radRadialGauge1";
+            this.tempGuage.Value = 60F;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 297);
-            this.Controls.Add(this.communication_test_tab);
+            this.Controls.Add(this.gauge_tab);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.communication_test_tab.ResumeLayout(false);
+            this.gauge_tab.ResumeLayout(false);
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
             this.Chart_tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabGuage.ResumeLayout(false);
-            this.tabGuage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tempGuage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,7 +304,7 @@
 
         private System.Windows.Forms.ComboBox cbBTDevices;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl communication_test_tab;
+        private System.Windows.Forms.TabControl gauge_tab;
         private System.Windows.Forms.TabPage Settings;
         private System.Windows.Forms.Label mac_address_label;
         private System.Windows.Forms.Button btnDisconnect;
@@ -266,7 +316,10 @@
         private System.Windows.Forms.TabPage Chart_tab;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TabPage tabGuage;
-        private System.Windows.Forms.Label label5;
+        private Telerik.WinControls.UI.Gauges.RadRadialGauge tempGuage;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeArc tempGaugeArc1;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeArc tempGaugeArc2;
+        private Telerik.WinControls.UI.Gauges.RadialGaugeSingleLabel tempGaugeSingleLabel1;
     }
 }
 

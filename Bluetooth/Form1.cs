@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace Bluetooth
 {
 
@@ -21,25 +22,25 @@ namespace Bluetooth
         bool run = true;
         bool test_run = true;
         AutoResetEvent discoverevent = new AutoResetEvent(false);
-        AutoResetEvent DataSendEvent = new AutoResetEvent(false);
         AutoResetEvent DataRecvEvent = new AutoResetEvent(false);
+
         Thread t_discover;
         Thread t_discoverend;
 
         System.Windows.Forms.Timer chartTimer = new System.Windows.Forms.Timer();
         System.Windows.Forms.Timer chart2Timer = new System.Windows.Forms.Timer();
         Thread chartupdateThread;
-        Thread chart2updateThread;
-        int count;
-        string recv_msg;
+
         Sensor sensor1 = new Sensor("Sensor1", 0x00);
         Sensor sensor2 = new Sensor("Sensor2", 0x00);
+       
 
         public Form1()
         {
             InitializeComponent();
             t_discover = new Thread(new ThreadStart(Discover));
             t_discoverend = new Thread(new ThreadStart(Discoverend));
+           
 
 
         }
@@ -196,7 +197,7 @@ namespace Bluetooth
             //Console.WriteLine("temp length " + temp.Length.ToString());
             if (temp.Length == 6 && test_run)
             {
-                DataSendEvent.Set();
+                
             }
             else
             {
@@ -233,7 +234,7 @@ namespace Bluetooth
                             double temp_value = 212.009 - (value * (639.9 / 4095));
                             sensor1.Data = temp_value;
                             SetText(temp_value.ToString());
-                            DataSendEvent.Set();
+                            DataRecvEvent.Set();
                             i = 7;
                         }
                         else
@@ -325,12 +326,10 @@ namespace Bluetooth
             this.Invoke(LabelArgReturnHnd, text);
         }
 
-        private void tabPageconnectivity_Click_1(object sender, EventArgs e)
+        private void gauge_tab_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Clicked");
+            CallRadialthread();
         }
-
-
     }
 
 }

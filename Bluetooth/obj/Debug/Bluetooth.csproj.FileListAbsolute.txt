@@ -106,3 +106,10 @@ C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Blue
 C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.csproj.CopyComplete
 C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.exe
 C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.pdb
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Telerik.WinControls.dll
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Telerik.WinControls.UI.dll
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\TelerikCommon.dll
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Telerik.WinControls.xml
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\bin\Debug\Telerik.WinControls.UI.xml
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.Guage_cs.resources
+C:\Users\gay_n\Documents\WindowsForm\WinformApplication\Bluetooth\obj\Debug\Bluetooth.exe.licenses
