@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cbBTDevices = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.communication_test_tab = new System.Windows.Forms.TabControl();
@@ -44,18 +42,12 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDiscover = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnStop_Test = new System.Windows.Forms.Button();
-            this.btnStart_Test = new System.Windows.Forms.Button();
             this.tabGuage = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.communication_test_tab.SuspendLayout();
             this.tabPageconnectivity.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabGuage.SuspendLayout();
             this.SuspendLayout();
@@ -184,12 +176,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.chart2);
             this.tabPage2.Controls.Add(this.chart1);
-            this.tabPage2.Controls.Add(this.btnStop_Test);
-            this.tabPage2.Controls.Add(this.btnStart_Test);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -198,79 +185,23 @@
             this.tabPage2.Text = "Communication Test";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(697, 234);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Received Data";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(303, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Sent Data";
-            // 
-            // chart2
-            // 
-            this.chart2.BackColor = System.Drawing.Color.Transparent;
-            this.chart2.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            this.chart2.Location = new System.Drawing.Point(568, 14);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(277, 213);
-            this.chart2.TabIndex = 3;
-            this.chart2.Text = "chart2";
-            // 
             // chart1
             // 
             this.chart1.BorderlineColor = System.Drawing.Color.Black;
             this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(162, 21);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(343, 206);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
-            // 
-            // btnStop_Test
-            // 
-            this.btnStop_Test.Location = new System.Drawing.Point(49, 78);
-            this.btnStop_Test.Name = "btnStop_Test";
-            this.btnStop_Test.Size = new System.Drawing.Size(75, 35);
-            this.btnStop_Test.TabIndex = 1;
-            this.btnStop_Test.Text = "Stop Test";
-            this.btnStop_Test.UseVisualStyleBackColor = true;
-            this.btnStop_Test.Click += new System.EventHandler(this.btnStop_Test_Click);
-            // 
-            // btnStart_Test
-            // 
-            this.btnStart_Test.Location = new System.Drawing.Point(49, 21);
-            this.btnStart_Test.Name = "btnStart_Test";
-            this.btnStart_Test.Size = new System.Drawing.Size(75, 32);
-            this.btnStart_Test.TabIndex = 0;
-            this.btnStart_Test.Text = "Start Test";
-            this.btnStart_Test.UseVisualStyleBackColor = true;
-            this.btnStart_Test.Click += new System.EventHandler(this.btnStart_Test_Click);
             // 
             // tabGuage
             // 
@@ -306,8 +237,6 @@
             this.tabPageconnectivity.ResumeLayout(false);
             this.tabPageconnectivity.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabGuage.ResumeLayout(false);
             this.tabGuage.PerformLayout();
@@ -331,11 +260,6 @@
         private System.Windows.Forms.Button btnDiscover;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button btnStop_Test;
-        private System.Windows.Forms.Button btnStart_Test;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabGuage;
         private System.Windows.Forms.Label label5;
     }

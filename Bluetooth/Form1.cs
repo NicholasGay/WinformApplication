@@ -32,8 +32,8 @@ namespace Bluetooth
         Thread chart2updateThread;
         int count;
         string recv_msg;
-        Sensor sensor1 = new Sensor("Sensor1", 0x00, 0x00);
-        Sensor sensor2 = new Sensor("Sensor2", 0x00, 0x00);
+        Sensor sensor1 = new Sensor("Sensor1", 0x00);
+        Sensor sensor2 = new Sensor("Sensor2", 0x00);
 
         public Form1()
         {
@@ -228,13 +228,12 @@ namespace Bluetooth
                         data[i] = (byte)peerStream.ReadByte();
                         if (data[6] == Receving_Config_Constants.END_BYTE)
                         {
-
-                            byte[] f_data = new byte[i - 1];
-                            for (j = 0; j < i - 1; j++)
-                            {
-                                f_data[j] = data[j + 1];
-                            }
-
+                            double value = (double)data[4];
+                            value = value + ((double)data[5] * 256);
+                            double temp_value = 212.009 - (value * (639.9 / 4095));
+                            sensor1.Data = temp_value;
+                            SetText(temp_value.ToString());
+                            DataSendEvent.Set();
                             i = 7;
                         }
                         else
