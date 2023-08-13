@@ -21,10 +21,10 @@ namespace Bluetooth
             chart1.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
             chart1.Series["Temperature"].Color = Color.Navy;
 
- 
+
 
             Callchartthread();
-         
+
         }
         private void Callchartthread()
         {
@@ -34,7 +34,7 @@ namespace Bluetooth
             chartupdateThread.Start();
         }
 
-       
+
 
         private void ProcessChart()
         {
@@ -46,19 +46,19 @@ namespace Bluetooth
                 DataRecvEvent.WaitOne();
                 int numberOfPoints = chart1.Series["Temperature"].Points.Count;
                 Console.WriteLine($"Number of points in Temperature: {numberOfPoints}");
-                
 
-                
+
+
                 try
                 {
-                    
+
                     this.Invoke(updatecharthandle, i, sensor1.Data);
                     i++;
 
                 }
                 catch (Exception ex)
                 {
-                   
+
                     Console.WriteLine(ex.ToString());
                 }
 
@@ -69,7 +69,7 @@ namespace Bluetooth
 
         }
 
-       
+
         private delegate void UpdateChart(double ih, double rdnh);
         private void UpdateChartMethod(double ih, double rdnh)
         {

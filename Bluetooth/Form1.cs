@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace Bluetooth
 {
 
+
     public partial class Form1 : Form
     {
         BluetoothDeviceInfo[] peers;
@@ -23,7 +24,8 @@ namespace Bluetooth
         bool test_run = true;
         AutoResetEvent discoverevent = new AutoResetEvent(false);
         AutoResetEvent DataRecvEvent = new AutoResetEvent(false);
-
+        Sensor sensor1 = new Sensor("Sensor1", 0x00);
+        Sensor sensor2 = new Sensor("Sensor2", 0x00);
         Thread t_discover;
         Thread t_discoverend;
 
@@ -31,16 +33,12 @@ namespace Bluetooth
         System.Windows.Forms.Timer chart2Timer = new System.Windows.Forms.Timer();
         Thread chartupdateThread;
 
-        Sensor sensor1 = new Sensor("Sensor1", 0x00);
-        Sensor sensor2 = new Sensor("Sensor2", 0x00);
-       
-
         public Form1()
         {
             InitializeComponent();
             t_discover = new Thread(new ThreadStart(Discover));
             t_discoverend = new Thread(new ThreadStart(Discoverend));
-           
+
 
 
         }
@@ -167,7 +165,7 @@ namespace Bluetooth
                 Thread recvthread = new Thread(new ThreadStart(RecvThread));
                 recvthread.Start();
                 //Console.WriteLine(device.DeviceName.ToString());
-               
+
 
             }
             catch (Exception ex)
@@ -197,7 +195,7 @@ namespace Bluetooth
             //Console.WriteLine("temp length " + temp.Length.ToString());
             if (temp.Length == 6 && test_run)
             {
-                
+
             }
             else
             {

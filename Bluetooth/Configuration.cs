@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bluetooth
+﻿namespace Bluetooth
 {
     internal static class Receving_Config_Constants
     {

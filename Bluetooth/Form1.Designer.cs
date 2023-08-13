@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cbBTDevices = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gauge_tab = new System.Windows.Forms.TabControl();
@@ -49,12 +49,15 @@
             this.tempGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.tempGaugeSingleLabel1 = new Telerik.WinControls.UI.Gauges.RadialGaugeSingleLabel();
             this.tempGuage = new Telerik.WinControls.UI.Gauges.RadRadialGauge();
+            this.tabDashboard = new System.Windows.Forms.TabPage();
+            this.highest_temp_label = new System.Windows.Forms.Label();
             this.gauge_tab.SuspendLayout();
             this.Settings.SuspendLayout();
             this.Chart_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabGuage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tempGuage)).BeginInit();
+            this.tabDashboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbBTDevices
@@ -80,6 +83,7 @@
             // gauge_tab
             // 
             this.gauge_tab.Controls.Add(this.Settings);
+            this.gauge_tab.Controls.Add(this.tabDashboard);
             this.gauge_tab.Controls.Add(this.Chart_tab);
             this.gauge_tab.Controls.Add(this.tabGuage);
             this.gauge_tab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -196,18 +200,18 @@
             this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Legend = "Legend1";
-            series3.Name = "Temperature";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend1";
+            series1.Name = "Temperature";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(904, 265);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
@@ -277,6 +281,29 @@
             this.tempGuage.Text = "radRadialGauge1";
             this.tempGuage.Value = 60F;
             // 
+            // tabDashboard
+            // 
+            this.tabDashboard.Controls.Add(this.highest_temp_label);
+            this.tabDashboard.Location = new System.Drawing.Point(4, 22);
+            this.tabDashboard.Name = "tabDashboard";
+            this.tabDashboard.Size = new System.Drawing.Size(910, 271);
+            this.tabDashboard.TabIndex = 3;
+            this.tabDashboard.Text = "Dashboard";
+            this.tabDashboard.UseVisualStyleBackColor = true;
+            // 
+            // highest_temp_label
+            // 
+            this.highest_temp_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.highest_temp_label.AutoSize = true;
+            this.highest_temp_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highest_temp_label.Location = new System.Drawing.Point(371, 63);
+            this.highest_temp_label.Name = "highest_temp_label";
+            this.highest_temp_label.Size = new System.Drawing.Size(98, 108);
+            this.highest_temp_label.TabIndex = 0;
+            this.highest_temp_label.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,6 +322,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabGuage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tempGuage)).EndInit();
+            this.tabDashboard.ResumeLayout(false);
+            this.tabDashboard.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,6 +349,8 @@
         private Telerik.WinControls.UI.Gauges.RadialGaugeArc tempGaugeArc1;
         private Telerik.WinControls.UI.Gauges.RadialGaugeArc tempGaugeArc2;
         private Telerik.WinControls.UI.Gauges.RadialGaugeSingleLabel tempGaugeSingleLabel1;
+        private System.Windows.Forms.TabPage tabDashboard;
+        private System.Windows.Forms.Label highest_temp_label;
     }
 }
 

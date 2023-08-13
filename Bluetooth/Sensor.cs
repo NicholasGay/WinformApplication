@@ -14,6 +14,6 @@ namespace Bluetooth
         public String Name { get; set; }
         public double Data { get; set; }
 
-        
+
     }
 }
