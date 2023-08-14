@@ -52,6 +52,7 @@
             this.tempGaugeArc1 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.tempGaugeArc2 = new Telerik.WinControls.UI.Gauges.RadialGaugeArc();
             this.tempGaugeSingleLabel1 = new Telerik.WinControls.UI.Gauges.RadialGaugeSingleLabel();
+            this.Sensor2Show = new System.Windows.Forms.Button();
             this.gauge_tab.SuspendLayout();
             this.Settings.SuspendLayout();
             this.tabDashboard.SuspendLayout();
@@ -185,6 +186,7 @@
             // 
             // tabDashboard
             // 
+            this.tabDashboard.Controls.Add(this.Sensor2Show);
             this.tabDashboard.Controls.Add(this.label2);
             this.tabDashboard.Controls.Add(this.highest_temp_label);
             this.tabDashboard.Location = new System.Drawing.Point(4, 22);
@@ -316,6 +318,16 @@
             this.tempGaugeSingleLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.tempGaugeSingleLabel1.UseCompatibleTextRendering = false;
             // 
+            // Sensor2Show
+            // 
+            this.Sensor2Show.Location = new System.Drawing.Point(702, 32);
+            this.Sensor2Show.Name = "Sensor2Show";
+            this.Sensor2Show.Size = new System.Drawing.Size(147, 41);
+            this.Sensor2Show.TabIndex = 2;
+            this.Sensor2Show.Text = "Display Second Sensor";
+            this.Sensor2Show.UseVisualStyleBackColor = true;
+            this.Sensor2Show.Click += new System.EventHandler(this.Sensor2Show_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +376,7 @@
         private System.Windows.Forms.TabPage tabDashboard;
         private System.Windows.Forms.Label highest_temp_label;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Sensor2Show;
     }
 }
 

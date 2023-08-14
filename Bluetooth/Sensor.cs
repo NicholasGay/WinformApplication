@@ -3,7 +3,7 @@
 
 namespace Bluetooth
 {
-    internal class Sensor
+    public class Sensor
     {
         public Sensor(string name, double data)
         {

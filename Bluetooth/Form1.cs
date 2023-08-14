@@ -28,6 +28,7 @@ namespace Bluetooth
         AutoResetEvent DataRecvEvent = new AutoResetEvent(false);
         AutoResetEvent triggerDashboard = new AutoResetEvent(false);
         AutoResetEvent triggerGauge = new AutoResetEvent(false);
+        AutoResetEvent form2DataRecvEvent = new AutoResetEvent(false);
         Sensor sensor1 = new Sensor("Temperature", 0x00);
         Sensor sensor2 = new Sensor("Sensor2", 0x00);
         Thread t_discover;
@@ -62,6 +63,20 @@ namespace Bluetooth
 
         }
 
+        public double getSensorValue { get
+            {
+                return sensor2.Data;
+            } 
+        }
+
+        public AutoResetEvent getEvent
+        {
+            get
+            {
+                return form2DataRecvEvent;
+            }
+        }
+
         private void cbBTDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBTDevices.SelectedIndex != -1)
@@ -77,22 +92,8 @@ namespace Bluetooth
 
         private void btnDiscover_Click(object sender, EventArgs e)
         {
-            //btnDiscover.Enabled = false;
-            //cli = new BluetoothClient();
-            //peers = cli.DiscoverDevices();
-            //this.cbBTDevices.DisplayMember = "DeviceName";
-            //this.cbBTDevices.ValueMember = null;
-            //this.cbBTDevices.DataSource = peers;
-            //btnDiscover.Enabled = true;
-
-            //if (cbBTDevices.Items.Count != 0)
-            //{
-            //    btnConnect.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnConnect.Enabled = false;
-            //}
+            
+           
             if (!t_discover.IsAlive)
             {
                 if (t_discover.ThreadState == ThreadState.Stopped)
@@ -250,10 +251,14 @@ namespace Bluetooth
                             value = value + ((double)data[5] * 256);
                             double temp_value = 212.009 - (value * (639.9 / 4095));
                             sensor1.Data = temp_value;
+                            value = (double)data[2];
+                            value = value + ((double)data[3] * 256);
+                            sensor2.Data = value;
                             SetText(temp_value.ToString());
                             triggerDashboard.Set();
                             DataRecvEvent.Set();
                             triggerGauge.Set();
+                            form2DataRecvEvent.Set();
                             data[6] = 0;
                             data[0] = 0;
                             i = 7;
@@ -328,7 +333,11 @@ namespace Bluetooth
             this.Invoke(LabelArgReturnHnd, text);
         }
 
-       
+        private void Sensor2Show_Click(object sender, EventArgs e)
+        {
+            var form2 = new Form2(this);
+            form2.Show();
+        }
     }
 
 }
