@@ -9,23 +9,7 @@ namespace Bluetooth
 {
     public partial class Form1 : Form
     {
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            serviceClass = BluetoothService.SerialPort;
-
-            chart1.Series["Temperature"].ChartType = SeriesChartType.FastLine;
-            chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chart1.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
-            chart1.ChartAreas["ChartArea1"].AxisY.Maximum = 60;
-            chart1.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
-            chart1.Series["Temperature"].Color = Color.Navy;
-
-
-
-            Callchartthread();
-
-        }
+        
         private void Callchartthread()
         {
             chart1.Series["Temperature"].Points.Clear();

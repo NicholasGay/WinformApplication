@@ -1,11 +1,13 @@
 ﻿using InTheHand.Net;
+using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Sockets;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Bluetooth
 {
@@ -24,15 +26,32 @@ namespace Bluetooth
         bool test_run = true;
         AutoResetEvent discoverevent = new AutoResetEvent(false);
         AutoResetEvent DataRecvEvent = new AutoResetEvent(false);
-        Sensor sensor1 = new Sensor("Sensor1", 0x00);
+        AutoResetEvent triggerDashboard = new AutoResetEvent(false);
+        AutoResetEvent triggerGauge = new AutoResetEvent(false);
+        Sensor sensor1 = new Sensor("Temperature", 0x00);
         Sensor sensor2 = new Sensor("Sensor2", 0x00);
         Thread t_discover;
         Thread t_discoverend;
 
-        System.Windows.Forms.Timer chartTimer = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer chart2Timer = new System.Windows.Forms.Timer();
+       
         Thread chartupdateThread;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            serviceClass = BluetoothService.SerialPort;
 
+            chart1.Series["Temperature"].ChartType = SeriesChartType.FastLine;
+            chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chart1.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
+            chart1.ChartAreas["ChartArea1"].AxisY.Maximum = 60;
+            chart1.ChartAreas["ChartArea1"].AxisX.IntervalOffset = 0;
+            chart1.Series["Temperature"].Color = Color.Navy;
+
+            CallRadialthread();
+            CallDashboardthread();
+            Callchartthread();
+
+        }
         public Form1()
         {
             InitializeComponent();
@@ -232,7 +251,11 @@ namespace Bluetooth
                             double temp_value = 212.009 - (value * (639.9 / 4095));
                             sensor1.Data = temp_value;
                             SetText(temp_value.ToString());
+                            triggerDashboard.Set();
                             DataRecvEvent.Set();
+                            triggerGauge.Set();
+                            data[6] = 0;
+                            data[0] = 0;
                             i = 7;
                         }
                         else
@@ -278,26 +301,7 @@ namespace Bluetooth
 
         }
 
-        /*private void SetText(string text)
-        {
-            if (this.txtDisplay.InvokeRequired)
-            {
-                StringArgReturningVoidDelegate d = new
-                StringArgReturningVoidDelegate(SetText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                this.txtDisplay.Text += ">> " + text;
-                this.txtDisplay.Text += "\r\n";
-            }
-        }*/
-        /*
-        private void SetText(string text)
-        {
-            txtDisplay.AppendText(">>" + text);
-
-        }*/
+       
         private void SetText(string text)
         {
             //Console.WriteLine("SetText_ThreadID: " +
@@ -324,10 +328,7 @@ namespace Bluetooth
             this.Invoke(LabelArgReturnHnd, text);
         }
 
-        private void gauge_tab_Click(object sender, EventArgs e)
-        {
-            CallRadialthread();
-        }
+       
     }
 
 }

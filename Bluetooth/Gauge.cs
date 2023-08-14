@@ -20,9 +20,9 @@ namespace Bluetooth
             UpdateGauge updategaugehandle = UpdateGaugeMethod;
             while (true)
             {
-                DataRecvEvent.WaitOne();
+                triggerGauge.WaitOne();
                 this.Invoke(updategaugehandle, sensor1.Data);
-                Console.Write("Called gauges");
+                Console.Write("Called gauges\n");
             }
 
 
